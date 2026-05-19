@@ -23,7 +23,7 @@ import "leaflet/dist/leaflet.css";
 
 function App() {
   
-  const API_URL = "https://routenova-backend.onrender.com";
+  const API_URL = `${API_URL}/api/plan-trip/`;
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
   const [cycleUsed, setCycleUsed] = useState("");
