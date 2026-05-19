@@ -23,7 +23,7 @@ import "leaflet/dist/leaflet.css";
 
 function App() {
 
-  // Render Backend URL
+  // RENDER BACKEND URL
   const API_URL = "https://routenova-backend.onrender.com";
 
   const [start, setStart] = useState("");
@@ -69,8 +69,6 @@ function App() {
   return (
 
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-blue-950 text-white overflow-hidden">
-
-      {/* BACKGROUND GLOW */}
 
       <div className="absolute top-0 left-0 w-72 h-72 bg-cyan-500/20 blur-3xl rounded-full"></div>
       <div className="absolute bottom-0 right-0 w-72 h-72 bg-blue-500/20 blur-3xl rounded-full"></div>
@@ -127,7 +125,7 @@ function App() {
                   Start Coordinates
                 </label>
 
-                <div className="flex items-center bg-slate-800/80 rounded-2xl px-4 border border-slate-700 focus-within:border-cyan-400 transition">
+                <div className="flex items-center bg-slate-800/80 rounded-2xl px-4 border border-slate-700">
 
                   <MapPin className="text-cyan-400" />
 
@@ -150,7 +148,7 @@ function App() {
                   Destination Coordinates
                 </label>
 
-                <div className="flex items-center bg-slate-800/80 rounded-2xl px-4 border border-slate-700 focus-within:border-cyan-400 transition">
+                <div className="flex items-center bg-slate-800/80 rounded-2xl px-4 border border-slate-700">
 
                   <Route className="text-cyan-400" />
 
@@ -173,7 +171,7 @@ function App() {
                   Current Cycle Used
                 </label>
 
-                <div className="flex items-center bg-slate-800/80 rounded-2xl px-4 border border-slate-700 focus-within:border-cyan-400 transition">
+                <div className="flex items-center bg-slate-800/80 rounded-2xl px-4 border border-slate-700">
 
                   <Clock className="text-cyan-400" />
 
@@ -192,7 +190,7 @@ function App() {
 
               <button
                 onClick={handleTrip}
-                className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 transition-all duration-300 py-4 rounded-2xl text-lg font-bold shadow-lg shadow-cyan-500/30 hover:scale-[1.02]"
+                className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 py-4 rounded-2xl text-lg font-bold shadow-lg shadow-cyan-500/30"
               >
 
                 {loading ? "Generating Smart Route..." : "Generate Trip"}
@@ -233,92 +231,32 @@ function App() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
 
-                <div className="bg-slate-800/70 rounded-2xl p-6 border border-slate-700">
-
-                  <p className="text-slate-400 mb-2">
-                    Distance
-                  </p>
-
+                <div className="bg-slate-800/70 rounded-2xl p-6">
+                  <p className="text-slate-400 mb-2">Distance</p>
                   <h3 className="text-3xl font-bold text-cyan-400">
                     {tripData.distance_miles}
                   </h3>
-
-                  <p className="text-slate-400 mt-1">
-                    Miles
-                  </p>
-
                 </div>
 
-                <div className="bg-slate-800/70 rounded-2xl p-6 border border-slate-700">
-
-                  <p className="text-slate-400 mb-2">
-                    Duration
-                  </p>
-
+                <div className="bg-slate-800/70 rounded-2xl p-6">
+                  <p className="text-slate-400 mb-2">Duration</p>
                   <h3 className="text-3xl font-bold text-cyan-400">
                     {tripData.duration_hours}
                   </h3>
-
-                  <p className="text-slate-400 mt-1">
-                    Hours
-                  </p>
-
                 </div>
 
-                <div className="bg-slate-800/70 rounded-2xl p-6 border border-slate-700">
-
-                  <p className="text-slate-400 mb-2">
-                    Driving Hours
-                  </p>
-
+                <div className="bg-slate-800/70 rounded-2xl p-6">
+                  <p className="text-slate-400 mb-2">Driving Hours</p>
                   <h3 className="text-3xl font-bold text-cyan-400">
                     {tripData.hos.driving_hours}
                   </h3>
-
                 </div>
 
-                <div className="bg-slate-800/70 rounded-2xl p-6 border border-slate-700">
-
-                  <p className="text-slate-400 mb-2">
-                    Remaining Cycle
-                  </p>
-
+                <div className="bg-slate-800/70 rounded-2xl p-6">
+                  <p className="text-slate-400 mb-2">Remaining Cycle</p>
                   <h3 className="text-3xl font-bold text-cyan-400">
                     {tripData.hos.remaining_cycle}
                   </h3>
-
-                </div>
-
-                <div className="bg-slate-800/70 rounded-2xl p-6 border border-slate-700">
-
-                  <div className="flex items-center gap-2 mb-2 text-slate-400">
-
-                    <Coffee size={18} />
-
-                    Breaks Required
-
-                  </div>
-
-                  <h3 className="text-3xl font-bold text-cyan-400">
-                    {tripData.hos.breaks_required}
-                  </h3>
-
-                </div>
-
-                <div className="bg-slate-800/70 rounded-2xl p-6 border border-slate-700">
-
-                  <div className="flex items-center gap-2 mb-2 text-slate-400">
-
-                    <Moon size={18} />
-
-                    Rest Periods
-
-                  </div>
-
-                  <h3 className="text-3xl font-bold text-cyan-400">
-                    {tripData.hos.rest_periods}
-                  </h3>
-
                 </div>
 
               </div>
@@ -327,17 +265,13 @@ function App() {
 
               <div className="h-[400px] flex flex-col items-center justify-center text-center">
 
-                <div className="bg-cyan-500/20 p-6 rounded-full mb-6 animate-pulse">
-
-                  <Truck size={60} className="text-cyan-400" />
-
-                </div>
+                <Truck size={60} className="text-cyan-400 mb-6" />
 
                 <h3 className="text-2xl font-bold mb-3">
                   Awaiting Route Generation
                 </h3>
 
-                <p className="text-slate-400 max-w-md">
+                <p className="text-slate-400">
                   Enter coordinates to generate intelligent trip analytics.
                 </p>
 
@@ -348,64 +282,6 @@ function App() {
           </div>
 
         </div>
-
-        {/* MAP SECTION */}
-
-        {tripData && (
-
-          <div className="mt-10 bg-white/10 backdrop-blur-xl border border-white/10 rounded-3xl p-8 shadow-2xl">
-
-            <h2 className="text-3xl font-bold mb-8 flex items-center gap-3">
-
-              <Route className="text-cyan-400" />
-
-              Live Route Map
-
-            </h2>
-
-            <div className="rounded-3xl overflow-hidden border border-slate-700">
-
-              <MapContainer
-                center={[tripData.start[1], tripData.start[0]]}
-                zoom={5}
-                style={{ height: "500px", width: "100%" }}
-              >
-
-                <TileLayer
-                  attribution='&copy; OpenStreetMap contributors'
-                  url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                />
-
-                <Marker
-                  position={[tripData.start[1], tripData.start[0]]}
-                >
-                  <Popup>
-                    Start Location
-                  </Popup>
-                </Marker>
-
-                <Marker
-                  position={[tripData.end[1], tripData.end[0]]}
-                >
-                  <Popup>
-                    Destination
-                  </Popup>
-                </Marker>
-
-                <Polyline
-                  positions={[
-                    [tripData.start[1], tripData.start[0]],
-                    [tripData.end[1], tripData.end[0]]
-                  ]}
-                />
-
-              </MapContainer>
-
-            </div>
-
-          </div>
-
-        )}
 
       </div>
 
