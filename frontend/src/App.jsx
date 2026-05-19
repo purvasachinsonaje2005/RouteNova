@@ -22,8 +22,10 @@ import {
 import "leaflet/dist/leaflet.css";
 
 function App() {
-  
-  const API_URL = `${API_URL}/api/plan-trip/`;
+
+  // Render Backend URL
+  const API_URL = "https://routenova-backend.onrender.com";
+
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
   const [cycleUsed, setCycleUsed] = useState("");
@@ -42,7 +44,7 @@ function App() {
     try {
 
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/plan-trip/",
+        `${API_URL}/api/plan-trip/`,
         {
           start: start.split(",").map(Number),
           end: end.split(",").map(Number),
@@ -374,31 +376,21 @@ function App() {
                   url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
 
-                {/* START MARKER */}
-
                 <Marker
                   position={[tripData.start[1], tripData.start[0]]}
                 >
-
                   <Popup>
                     Start Location
                   </Popup>
-
                 </Marker>
-
-                {/* END MARKER */}
 
                 <Marker
                   position={[tripData.end[1], tripData.end[0]]}
                 >
-
                   <Popup>
                     Destination
                   </Popup>
-
                 </Marker>
-
-                {/* ROUTE LINE */}
 
                 <Polyline
                   positions={[
